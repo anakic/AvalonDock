@@ -1,4 +1,4 @@
-﻿/************************************************************************
+/************************************************************************
    AvalonDock
 
    Copyright (C) 2007-2013 Xceed Software Inc.
@@ -21,7 +21,7 @@ using System.Windows.Threading;
 
 namespace AvalonDock.Controls
 {
-	internal static class FocusElementManager
+	public static class FocusElementManager
 	{
 		#region fields
 
@@ -148,6 +148,9 @@ namespace AvalonDock.Controls
 		#endregion Internal Methods
 
 		#region Private Methods
+
+		public static void UnhookHack()
+			=> Current_Exit(null, null);
 
 		private static void Current_Exit(object sender, ExitEventArgs e)
 		{
