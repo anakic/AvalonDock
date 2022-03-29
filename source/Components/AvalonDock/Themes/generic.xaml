@@ -1170,7 +1170,7 @@
 											<ColumnDefinition Width="Auto" />
 											<ColumnDefinition />
 										</Grid.ColumnDefinitions>
-										<Image Source="{Binding SelectedDocument.LayoutElement.IconSource, Converter={avalonDockConverters:NullToDoNothingConverter}}" Stretch="None" />
+										<Image Height="16" Width="16" Source="{Binding SelectedDocument.LayoutElement.IconSource, Converter={avalonDockConverters:NullToDoNothingConverter}}"/>
 										<TextBlock
 											x:Name="selectedElementTitle"
 											Grid.Column="1"
@@ -1229,7 +1229,7 @@
 															<ColumnDefinition Width="Auto" />
 															<ColumnDefinition />
 														</Grid.ColumnDefinitions>
-														<Image Source="{Binding LayoutElement.IconSource, Converter={avalonDockConverters:NullToDoNothingConverter}}" Stretch="None" />
+														<Image Height="16" Width="16" Source="{Binding LayoutElement.IconSource, Converter={avalonDockConverters:NullToDoNothingConverter}}"/>
 														<TextBlock
 															Grid.Column="1"
 															Margin="4,2,0,2"
@@ -1277,7 +1277,7 @@
 															<ColumnDefinition Width="Auto" />
 															<ColumnDefinition />
 														</Grid.ColumnDefinitions>
-														<Image Source="{Binding LayoutElement.IconSource, Converter={avalonDockConverters:NullToDoNothingConverter}}" Stretch="None" />
+														<Image Height="16" Width="16" Source="{Binding LayoutElement.IconSource, Converter={avalonDockConverters:NullToDoNothingConverter}}" />
 														<TextBlock
 															Grid.Column="1"
 															Margin="4,2,0,2"
