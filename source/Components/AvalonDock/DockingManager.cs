@@ -2648,22 +2648,22 @@ namespace AvalonDock
 
 		#endregion LayoutItems
 
-		public IntPtr OwnerWindowHwnd { get; set; }
+		public Action<Window> ShowCenteredAction { get; set; }
 
 		private void ShowNavigatorWindow()
 		{
 			if (_navigatorWindow == null)
-				_navigatorWindow = new NavigatorWindow(this);
+				_navigatorWindow = new NavigatorWindow(this) { WindowStartupLocation = WindowStartupLocation.CenterOwner };
 
-			if (OwnerWindowHwnd != default)
+			if (ShowCenteredAction != null)
 			{
-				new WindowInteropHelper(_navigatorWindow).Owner = OwnerWindowHwnd;
+				ShowCenteredAction(_navigatorWindow);
 			}
 			else
+			{
 				_navigatorWindow.Owner = Window.GetWindow(this);
-			_navigatorWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-
-			_navigatorWindow.ShowDialog();
+				_navigatorWindow.ShowDialog();
+			}
 			_navigatorWindow = null;
 		}
 
