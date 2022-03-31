@@ -754,28 +754,31 @@ namespace AvalonDock.Layout
 			if (PreviousContainer == null)
 			{
 				var parentAsGroup = Parent as ILayoutGroup;
-				PreviousContainer = parentAsContainer;
-				PreviousContainerIndex = parentAsGroup.IndexOfChild(this);
-
-				if (parentAsGroup is ILayoutPaneSerializable layoutPaneSerializable)
+				if (parentAsGroup != null)
 				{
-					PreviousContainerId = layoutPaneSerializable.Id;
-					// This parentAsGroup will be removed in the GarbageCollection below
-					if (parentAsGroup.Children.Count() == 1 && parentAsGroup.Parent != null && Root.Manager != null)
-					{
-						Parent = Root.Manager.Layout;
-						PreviousContainer = parentAsGroup.Parent;
-						PreviousContainerIndex = -1;
+					PreviousContainer = parentAsContainer;
+					PreviousContainerIndex = parentAsGroup.IndexOfChild(this);
 
-						if (parentAsGroup.Parent is ILayoutPaneSerializable paneSerializable)
-							PreviousContainerId = paneSerializable.Id;
-						else
-							PreviousContainerId = null;
+					if (parentAsGroup is ILayoutPaneSerializable layoutPaneSerializable)
+					{
+						PreviousContainerId = layoutPaneSerializable.Id;
+						// This parentAsGroup will be removed in the GarbageCollection below
+						if (parentAsGroup.Children.Count() == 1 && parentAsGroup.Parent != null && Root.Manager != null)
+						{
+							Parent = Root.Manager.Layout;
+							PreviousContainer = parentAsGroup.Parent;
+							PreviousContainerIndex = -1;
+
+							if (parentAsGroup.Parent is ILayoutPaneSerializable paneSerializable)
+								PreviousContainerId = paneSerializable.Id;
+							else
+								PreviousContainerId = null;
+						}
 					}
 				}
 			}
 
-			parentAsContainer.RemoveChild(this);
+			parentAsContainer?.RemoveChild(this);
 			root?.CollectGarbage();			
 			OnClosed();
 		}
