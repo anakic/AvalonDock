@@ -268,11 +268,6 @@
 							</ControlTemplate>
 						</Setter.Value>
 					</Setter>
-					<Style.Triggers>
-						<DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TabControl}}, Path=Items.Count, FallbackValue=1}" Value="1">
-							<Setter Property="Visibility" Value="Collapsed" />
-						</DataTrigger>
-					</Style.Triggers>
 				</Style>
 			</Setter.Value>
 		</Setter>
